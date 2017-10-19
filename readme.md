@@ -4,7 +4,9 @@ This is a simple containized private network for `pyethapp` development with Doc
 
 1. Python2 / Python3 compatibility migration and testing
 2. Understanding how to configure and develop pyethapp
-2. Developing Casper and sharding on pyethapp
+3. Developing Casper and sharding on pyethapp
+
+If you want to build pyethapp private network, please see [konradkonrad/docker-pyeth-cluster: pyethapp private cluster with docker-compose](https://github.com/konradkonrad/docker-pyeth-cluster).
 
 ## Docker Images
 1. `Dockerfile` - Python3.6-based image
