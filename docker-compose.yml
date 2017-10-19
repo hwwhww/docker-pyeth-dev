@@ -1,0 +1,75 @@
+version: '2'
+
+services:
+  bootstrap:
+    container_name: bootstrap
+    image: localethereum/pyethapp-dev
+    command: "/sbin/init"
+    ports:
+      - 40002:30303
+      - 40002:30303/udp
+      - 41002:8545
+    volumes:
+      - pyeth-data-volume:/pyeth
+      - ./data/bootstrap/config:/root/.config/pyethapp
+      - ./data/bootstrap/log:/root/log
+    restart: always
+    networks:
+      back:
+          ipv4_address: 172.18.250.2
+  miner:
+    container_name: miner
+    image: localethereum/pyethapp-dev
+    command: "/sbin/init"
+    ports:
+      - 40003:30303
+      - 40003:30303/udp
+      - 41003:8545
+    links:
+      - bootstrap
+    volumes:
+      - pyeth-data-volume:/pyeth
+      - ./data/miner/config:/root/.config/pyethapp
+      - ./data/miner/log:/root/log
+    restart: always
+    networks:
+      back:
+          ipv4_address: 172.18.250.3
+
+  # [Note] For testing Python2, remember to build localethereum/pyethapp-dev27
+  # miner-py27:
+  #   container_name: miner-py27
+  #   image: localethereum/pyethapp-dev27
+  #   command: "/sbin/init"
+  #   ports:
+  #     - 40004:30303
+  #     - 40004:30303/udp
+  #     - 41004:8545
+  #   links:
+  #     - bootstrap
+  #   volumes:
+  #     - pyeth-data-volume:/pyeth
+  #     - ./data/miner-py27/config:/root/.config/pyethapp
+  #     - ./data/miner-py27/log:/root/log
+  #   restart: always
+  #   networks:
+  #     back:
+  #         ipv4_address: 172.18.250.4
+
+networks:
+  back:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.250.0/24
+        gateway: 172.18.250.1
+volumes:
+    pyeth-data-volume:
+      driver: local
+      driver_opts:
+        type: none
+        device: './share_data'
+        o: bind

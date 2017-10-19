@@ -1,0 +1,57 @@
+accounts:
+  privkeys_hex: [482580fe05668c54ed16708d17481cf6546be6faca24d4b80919a6ef5ed95c92]
+node: {privkey_hex: 8a7c05229e8696c70ed83ffed9aefe02aeb93352b68584f130944303590fa63b}
+eth:
+  network_id: 5656
+  genesis: {
+    "nonce": "0x0000000000000056",
+    "difficulty": "0x1000",
+    "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "coinbase": "0x0000000000000000000000000000000000000000",
+    "timestamp": "0x00",
+    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "extraData": "0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa",
+    "gasLimit": "0x2fefd8",
+    "alloc": {
+      "82a978b3f5962a5b0957d9ee9eef472ee55b42f1": {
+        "balance": "1000000000000000000000"
+      },
+      "7d577a597b2742b498cb5cf0c26cdcd726d39e6e": {
+          "balance": "1000000000000000000000"
+      },
+      "dceceaf3fc5c0a63d195d69b1a90011b7b19650d": {
+          "balance": "1000000000000000000000"
+      },
+      "598443f1880ef585b21f1d7585bd0577402861e5": {
+          "balance": "1000000000000000000000"
+      },
+      "13cbb8d99c6c4e0f2728c7d72606e78a29c4e224": {
+          "balance": "1000000000000000000000"
+      },
+      "77db2bebba79db42a978f896968f4afce746ea1f": {
+          "balance": "1000000000000000000000"
+      },
+      "24143873e0e0815fdcbcffdbe09c979cbf9ad013": {
+          "balance": "1000000000000000000000"
+      },
+      "10a1c1cb95c92ec31d3f22c66eef1d9f3f258c6b": {
+          "balance": "1000000000000000000000"
+      },
+      "e0fc04fa2d34a66b779fd5cee748268032a146c0": {
+          "balance": "1000000000000000000000"
+      },
+      "90f0b1ebbba1c1936aff7aaf20a7878ff9e04b6c": {
+          "balance": "1000000000000000000000"
+      }
+    }
+  }
+jsonrpc:
+  listen_host: '0.0.0.0'
+  listen_port: 8545
+discovery:
+  listen_port: 30303
+  bootstrap_nodes: [
+    "enode://d3260a710a752b926bb3328ebe29bfb568e4fb3b4c7ff59450738661113fb21f5efbdf42904c706a9f152275890840345a5bc990745919eeb2dfc2c481d778ee@0.0.0.0:30303"
+  ]
+p2p:
+  listen_port: 30303
