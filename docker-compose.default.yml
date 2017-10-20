@@ -1,10 +1,8 @@
-version: '2'
-
 services:
   bootstrap:
     container_name: bootstrap
     image: localethereum/pyethapp-dev
-    command: "/sbin/init"
+    command: ["/sbin/init"]
     ports:
       - 40002:30303
       - 40002:30303/udp
@@ -20,13 +18,11 @@ services:
   miner:
     container_name: miner
     image: localethereum/pyethapp-dev
-    command: "/sbin/init"
+    command: ["/sbin/init"]
     ports:
       - 40003:30303
       - 40003:30303/udp
       - 41003:8545
-    links:
-      - bootstrap
     volumes:
       - pyeth-data-volume:/pyeth
       - ./data/miner/config:/root/.config/pyethapp
@@ -71,5 +67,5 @@ volumes:
       driver: local
       driver_opts:
         type: none
-        device: './share_data'
+        device: 'DOCKER_PYETH_DEV_REPO_ABSOLUTE_PATH/share_data'
         o: bind

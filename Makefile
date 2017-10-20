@@ -5,6 +5,8 @@ setup27:
 
 init-config:
 	sh start.sh
+	cp docker-compose.default.yml docker-compose.yml
+
 init-source:
 	test -d ./pydevp2p || git clone https://github.com/ethereum/pydevp2p.git --branch develop pydevp2p
 	test -d ./pyethapp || git clone https://github.com/ethereum/pyethapp.git --branch develop pyethapp

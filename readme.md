@@ -52,12 +52,22 @@ make setup
 make init-source
 ```
 
-### 4. Build containers
+### 4. Initialize the configuration
+```sh
+make init-config
+```
+> Note that all containers share the same source code in `./shared_data/`.
+
+
+### 5. Change `DOCKER_PYETH_DEV_REPO_ABSOLUTE_PATH` in docker-compose.yml manually
+Change `DOCKER_PYETH_DEV_REPO_ABSOLUTE_PATH` to the absolute path of `docker-pyeth-dev` directory.
+
+### 6. Build containers
 ```sh
 docker-compose up -d
 ```
 
-### 5. Rebuild source code
+### 7. Rebuild source code
 
 > **[Note]** a workable `pyethapp` branch: https://github.com/hwwhww/pyethapp/commits/dev_env
 
@@ -67,12 +77,7 @@ make rebuild-boot-all
 make rebuild-miner-all
 ```
 
-### 6. Initialize the configuration
-```sh
-make init-config
-```
-
-### 7. Run pyethapp daemon
+### 8. Run pyethapp daemon
 * bootstrap node
 
     ```sh
