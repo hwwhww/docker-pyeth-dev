@@ -18,17 +18,17 @@ rebuild-boot-all:
 	docker exec bootstrap bash -c "cd /pyeth/pydevp2p && python setup.py install"
 	docker exec bootstrap bash -c "cd /pyeth/pyethereum && python setup.py install"
 	docker exec bootstrap bash -c "cd /pyeth/sharding && pip install -r requirements.txt"
-	docker exec bootstrap bash -c "cd /pyeth/pyethapp && pip install -e ."
+	docker exec bootstrap bash -c "cd /pyeth/pyethapp && python setup.py install"
 rebuild-miner-all:
 	docker exec miner bash -c "cd /pyeth/pydevp2p && python setup.py install"
 	docker exec miner bash -c "cd /pyeth/pyethereum && python setup.py install"
 	docker exec miner bash -c "cd /pyeth/sharding && pip install -r requirements.txt"
 	docker exec miner bash -c "cd /pyeth/pyethapp && python setup.py install"
 rebuild-miner27-all:
-	docker exec miner bash -c "cd /pyeth/pydevp2p && python setup.py install"
-	docker exec miner bash -c "cd /pyeth/pyethereum && python setup.py install"
-	docker exec miner bash -c "cd /pyeth/sharding && pip install -r requirements.txt"
-	docker exec miner bash -c "cd /pyeth/pyethapp && python setup.py install"
+	docker exec miner-py27 bash -c "cd /pyeth/pydevp2p && python setup.py install"
+	docker exec miner-py27 bash -c "cd /pyeth/pyethereum && python setup.py install"
+	docker exec miner-py27 bash -c "cd /pyeth/sharding && pip install -r requirements.txt"
+	docker exec miner-py27 bash -c "cd /pyeth/pyethapp && python setup.py install"
 
 run-boot:
 	docker exec bootstrap bash -c "pyethapp --password /root/.config/pyethapp/password.txt -l :info,eth:debug,pow:debug  --log-file /root/log/log.txt run &"
