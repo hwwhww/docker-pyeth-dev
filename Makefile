@@ -8,11 +8,12 @@ init-config:
 	cp docker-compose.default.yml docker-compose.yml
 
 init-source:
-	test -d ./pydevp2p || git clone https://github.com/ethereum/pydevp2p.git --branch develop pydevp2p
-	test -d ./pyethapp || git clone https://github.com/ethereum/pyethapp.git --branch develop pyethapp
-	test -d ./pyethereum || git clone https://github.com/ethereum/pyethereum.git --branch develop pyethereum
-	test -d ./sharding || git clone https://github.com/ethereum/sharding.git --branch develop sharding
-	cd pyethereum && git submodule init && git submodule update --recursive
+	mkdir share_data
+	test -d ./share_data/pydevp2p || git clone https://github.com/ethereum/pydevp2p.git --branch develop ./share_data/pydevp2p
+	test -d ./share_data/pyethapp || git clone https://github.com/ethereum/pyethapp.git --branch develop ./share_data/pyethapp
+	test -d ./share_data/pyethereum || git clone https://github.com/ethereum/pyethereum.git --branch develop ./share_data/pyethereum
+	test -d ./share_data/sharding || git clone https://github.com/ethereum/sharding.git --branch develop ./share_data/sharding
+	cd ./share_data/pyethereum && git submodule init && git submodule update --recursive
 
 rebuild-boot-all:
 	docker exec bootstrap bash -c "cd /pyeth/pydevp2p && python setup.py install"

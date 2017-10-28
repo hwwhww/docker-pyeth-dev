@@ -1,3 +1,4 @@
+version: '2'
 services:
   bootstrap:
     container_name: bootstrap

@@ -42,14 +42,18 @@ git clone https://github.com/hwwhww/docker-pyeth-dev.git
 cd docker-pyeth-dev
 ```
 
-### 2. Build docker image
-```sh
-make setup
-```
-
-### 3. Download source code for developing pyethapp
+### 2. Download source code for developing pyethapp
 ```sh
 make init-source
+```
+
+> **[Note]**
+> Regarding to `pyethapp` repository: the default branch is `ethereum/pyethapp` which doesn't support Python3 for now and the Python3 compatible PR is in review.
+> For now, please switch to a workable branch manually: https://github.com/hwwhww/pyethapp/commits/dev_env
+
+### 3. Build docker image
+```sh
+make setup
 ```
 
 ### 4. Initialize the configuration
@@ -57,7 +61,6 @@ make init-source
 make init-config
 ```
 > Note that all containers share the same source code in `./shared_data/`.
-
 
 ### 5. Change `DOCKER_PYETH_DEV_REPO_ABSOLUTE_PATH` in docker-compose.yml manually
 Change `DOCKER_PYETH_DEV_REPO_ABSOLUTE_PATH` to the absolute path of `docker-pyeth-dev` directory.
@@ -68,10 +71,6 @@ docker-compose up -d
 ```
 
 ### 7. Rebuild source code
-
-> **[Note]** a workable `pyethapp` branch: https://github.com/hwwhww/pyethapp/commits/dev_env
-
-
 ```sh
 make rebuild-boot-all
 make rebuild-miner-all
